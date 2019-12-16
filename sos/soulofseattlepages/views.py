@@ -3,22 +3,22 @@ from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
-from .models import Article
+from .models import Post
 
 # Create your views here.
 
 def home(request):
     if request.method == 'GET':
-        data = Article.objects.all()
+        queryset = Post.objects.filter(status=1).order_by('-created_on')
 
         articles = {
-            "articles": data
+            "articles": queryset
 
         }
 
     return render(request, 'home.htm', articles)
 
-def article(request, article_title):
+def article(request, slug):
     return render(request, 'article.htm')
 
 def resources(request):

@@ -36,18 +36,23 @@
 
     <section class="pt-5 pl-5">
         <div class="container">
-            {% for article in articles %}
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ article.article_title }}</h5>
-                    <p class="card-text">{{ article.article_author }}</p>
-                    <a href="article/{{ article.article_title }}" class="btn btn-primary">Read</a>
+            <div class="row">
+                <div class="col-md-8 mt-3 left">
+                    {% for article in articles %}
+                    <div class="card mb-4" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <p class="card-text text-muted h6">{{ article.author }} | {{ article.created_on}}</p>
+                            <p class="card-text">{{ article.content|slice:":200" }}</p>
+                            <a href="article/{{ article.slug }}" class="btn btn-primary">Read</a>
+                        </div>
+                        
+                    </div>      
+                    
                 </div>
                 {% endfor %}
 
-            </div>       
-
+            </div>
         </div>
     </section>
 

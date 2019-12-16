@@ -1,0 +1,14 @@
+asgiref==3.2.3
+certifi==2019.11.28
+Django==3.0
+django-crispy-forms==1.8.1
+django-sendgrid-v5==0.8.1
+future==0.18.2
+python-http-client==3.2.1
+pytz==2019.3
+sendgrid==6.1.0
+sendgrid-django==4.2.0
+sendgrid-python==0.1.1
+sqlparse==0.3.0
+virtualenv==16.7.9
+virtualenv-clone==0.5.3

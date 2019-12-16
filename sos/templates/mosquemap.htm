@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Soul of Seattle</title>
+    <style>
+        /* Set the size of the div element that contains the map */
+        #map {
+            height: 400px;
+            /* The height is 400 pixels */
+            width: 100%;
+            /* The width is the width of the web page */
+        }
+    </style>
+</head>
+
+<body>
+    <header class="pt-5 pl-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm">
+                        <a>Home</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="">Mosque Map</a>
+                    </div>
+                    <div class="col-sm">
+                        <a>Community</a>
+                    </div>
+
+                    <div class="col-sm">
+                        <a href="calender">Calender</a>
+
+                    </div>
+                    <div class="col-sm">
+                        <a href="resources">Resources</a>
+
+                    </div>
+                </div>
+            </div>
+    </header>
+
+    <section class="pt-5">
+        <!--The div element for the map -->
+        <div id="map"></div>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Seattle
+                var seattle = { lat: 47.608013, lng: -122.335167 };
+                // The map, centered at Seattle
+                var map = new google.maps.Map(
+                    document.getElementById('map'), { zoom: 11, center: seattle });
+                // The marker, positioned at Seattle
+
+                var islamicHouse = { lat: 47.662853, lng: -122.304675}
+
+                
+                var islamicHouseMarker = new google.maps.Marker({ position: islamicHouse, map: map });
+
+                var infowindow = new google.maps.InfoWindow({
+                    content: "Islamic House",
+                })
+
+                islamicHouseMarker.addListener('click', function() {
+                    infowindow.open(map, islamicHouseMarker)
+
+                }) 
+            }
+        </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function
+        -->
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_JpGvecXDsdncOp72F8HWYzOj0oBPBm4&callback=initMap">
+            </script>
+    </section>
+</body>
+
+</html>

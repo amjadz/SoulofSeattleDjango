@@ -18,7 +18,7 @@ def home(request):
 
     return render(request, 'home.htm', articles)
 
-def article(request):
+def article(request, article_title):
     return render(request, 'article.htm')
 
 def resources(request):

@@ -19,7 +19,13 @@ def home(request):
     return render(request, 'home.htm', articles)
 
 def article(request, slug):
-    return render(request, 'article.htm')
+    article = Post.objects.filter(slug=slug).values()
+
+    article_info = {
+        "object": article
+    }
+
+    return render(request, 'article.htm', article_info)
 
 def resources(request):
     return render(request, 'resources.htm')

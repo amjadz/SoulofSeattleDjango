@@ -30,6 +30,9 @@ def article(request, slug):
 def resources(request):
     return render(request, 'resources.htm')
 
+def community(request):
+    return render(request, 'community.htm')
+
 def mosquemap(request):
     return render(request, 'mosquemap.htm')
 

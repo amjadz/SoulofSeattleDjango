@@ -8,7 +8,16 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Soul of Seattle</title>
+    <style>
 
+        img {
+            border-radius: 50%;
+    
+        }
+    
+    
+    
+    </style>
 </head>
 <body>
     <header class="pt-5 pl-5">
@@ -41,7 +50,7 @@
             {% for article in object %}
             
             <h1 class="pt-5">{{ article.title }}</h1>
-            <p class=" text-muted">{{ article.author }} | {{ article.created_on }}</p>
+            <p class="card-text text-muted h6"> <img src="https://via.placeholder.com/40"> | {{ article.author }} | {{ article.created_on}} </p>
             <p class="card-text ">{{ article.content | safe | linebreaks}} </p>
             {% endfor %}
         </div>

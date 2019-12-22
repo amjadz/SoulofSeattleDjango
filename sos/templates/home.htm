@@ -13,6 +13,7 @@
 
     img {
         border-radius: 50%;
+        width: 10%;
 
     }
 
@@ -54,7 +55,7 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h2 class="card-title">{{ article.title }}</h2>
-                                <p class="card-text text-muted h6"> <img src="https://via.placeholder.com/40"> | {{ article.author }} | {{ article.created_on}} </p>
+                                <p class="card-text text-muted h6"> <img src="article/{{ article.upload_image }}"> | {{ article.author }} | {{ article.created_on | date}} </p>
                                 <p class="card-text">{{article.content|slice:":200" }}</p>
                                 <a href="article/{{ article.slug }}" class="btn btn-primary">Read More &rarr;</a>
                             </div>

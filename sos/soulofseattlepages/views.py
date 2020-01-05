@@ -44,9 +44,15 @@ def calender(request):
         if form.is_valid():
             event_name = form.cleaned_data['event_name']
             your_email = form.cleaned_data['your_email']
+            start_time = form.cleaned_data['start_time']
+            end_time = form.cleaned_data['end_time']
+            event_date = form.cleaned_data['event_date'] 
             message = form.cleaned_data['message']
+
+            email_message = message + " " + ("start time: " + start_time) + " " + ("end time:" + end_time) + " " + str(event_date) 
+            
             try:
-                send_mail(event_name, message, 'amjadzubair931@gmail.com' ,[your_email])
+                send_mail(event_name, email_message, 'amjadzubair931@gmail.com' ,[your_email], html_message=None)
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponse("Your email has been sent!")

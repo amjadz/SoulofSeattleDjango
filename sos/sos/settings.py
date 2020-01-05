@@ -40,9 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'soulofseattlepages',
     'crispy_forms',
+    'bootstrap_datepicker_plus',
+    'bootstrap4' 
+
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+BOOTSTRAP4 = {
+    'include_jquery': True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

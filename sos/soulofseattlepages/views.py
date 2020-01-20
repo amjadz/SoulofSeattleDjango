@@ -1,9 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse 
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
 from .models import Post
+from taggit.models import Tag
+
 
 # Create your views here.
 
@@ -13,19 +15,15 @@ def home(request):
 
         articles = {
             "articles": queryset
-
         }
 
     return render(request, 'home.htm', articles)
 
 def article(request, slug):
     article = Post.objects.filter(slug=slug).values()
+    related_articles = Post.tags.similar_objects()
 
-    article_info = {
-        "object": article
-    }
-
-    return render(request, 'article.htm', article_info)
+    return render(request, 'article.htm', {"articles": article}, {"related_articles": related_articles})
 
 def resources(request):
     return render(request, 'resources.htm')

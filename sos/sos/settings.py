@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'soulofseattlepages',
     'crispy_forms',
     'bootstrap_datepicker_plus',
-    'bootstrap4' 
+    'bootstrap4',
+    'taggit' 
 
 ]
 

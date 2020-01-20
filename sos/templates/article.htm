@@ -43,7 +43,7 @@
 
     <section>
         <div class="container">
-            {% for article in object %}
+            {% for article in articles %}
             
             <h1 class="pt-5">{{ article.title }}</h1>
            
@@ -52,7 +52,14 @@
             {% endfor %}
         </div>
 
+
+
+
     </section>
+
+    {% for article in related_articles %}
+        <h1>{{ article.title }}</h1>
+    {% endfor %}
 
 
 </body>

@@ -21,9 +21,14 @@ def home(request):
 
 def article(request, slug):
     article = Post.objects.filter(slug=slug).values()
-    related_articles = Post.tags.similar_objects()
+    related_articles = Post.objects.get(slug=slug)
 
-    return render(request, 'article.htm', {"articles": article}, {"related_articles": related_articles})
+    article_info = {
+        "article": article,
+        "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
+    }
+
+    return render(request, 'article.htm', article_info)
 
 def resources(request):
     return render(request, 'resources.htm')

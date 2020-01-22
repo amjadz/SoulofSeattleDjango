@@ -43,7 +43,7 @@
 
     <section>
         <div class="container">
-            {% for article in articles %}
+            {% for article in article %}
             
             <h1 class="pt-5">{{ article.title }}</h1>
            
@@ -51,15 +51,27 @@
             <p class="card-text ">{{ article.content | safe | linebreaks}} </p>
             {% endfor %}
         </div>
+    </section>
 
-
-
+    <section>
+        <div class="container">
+            <h1>Related Articles</h1>
+            {% for related_article in related_articles %}
+            <a href="{{ related_article.slug }}">
+                <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ related_article.title }}</h5>
+                        <p class="card-text">{{ related_article.content |slice:":200" }}</p>
+                    </div>
+                </div>
+            </div>
+            </a>
+        {% endfor %}
 
     </section>
 
-    {% for article in related_articles %}
-        <h1>{{ article.title }}</h1>
-    {% endfor %}
+
 
 
 </body>

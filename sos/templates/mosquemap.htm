@@ -101,28 +101,22 @@
                 ]       
             
                 var mosqueMarker, count;
-                
-                for (count = 0; count < mosqueLocations.length; count++){
-                    mosqueMarker = new google.maps.Marker({
-                        position: new google.maps.LatLng(mosqueLocations[count][1], mosqueLocations[count][2]),
-                        title: mosqueLocations[count][0],
-                        map: map
-                    })
-                }
-                
                 var mosqueInfowindow = new google.maps.InfoWindow({})
+                
+                for (var count = 0; count < mosqueLocations.length; count++) {
+                    var mosqueMarker = new google.maps.Marker({
+                      position: new google.maps.LatLng(mosqueLocations[count][1], mosqueLocations[count][2]),
+                      title: mosqueLocations[count][0],
+                      map: map
+                    });
 
-                mosqueMarker.addListener('click', function(count) {
-                    mosqueInfowindow.setContent(mosqueLocations[count][0]),
-                    console.log(mosqueLocations)
-                    mosqueInfowindow.open(map, mosqueMarker)
+                    mosqueMarker.addListener('click', (function(count) {
+                    return function(evt) {
+                      mosqueInfowindow.setContent(mosqueLocations[count][0]),
+                      mosqueInfowindow.open(map, this)
+                      }})(count))
+                  }
 
-
-                })
-
-
-
-            
                 if (navigator.geolocation) {
                     var positionOptions = {
                         enableHighAccuracy: true,

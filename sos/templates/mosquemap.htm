@@ -58,20 +58,108 @@
                     document.getElementById('map'), { zoom: 11, center: seattle });
                 // The marker, positioned at Seattle
 
-                var islamicHouse = { lat: 47.662853, lng: -122.304675}
+                var mosqueLocations = [
+                    ["Islamic House", 47.662577,-122.304618],
+                    ["Al Fidows Center", 47.2969,-122.3102],
+                    ["Idris Mosque", 47.708704,-122.312826],
+                    ["Islamic Center of North Seattle(Masjid At Tawba)", 47.662577,-122.304618],
+                    ["Islamic Community of Bosniaks in Washington",47.773995,-122.303850],
+                    ["Masjid Umar Al Farooq",47.783175,-122.307974],
+                    ["Islamic Center of Bothell",47.777874,-122.190607],
+                    ["IMAN Center of Kirkland", 47.671551,-122.202626],
+                    ["Zainab Center", 47.819548,-122.310931],
+                    ["Islamic Center of Puget Sound", 47.856169,-122.288632],
+                    ["Islamic Center of Redmond", 47.667865,-122.098067],
+                    ["Muslim Association of Puget Sound", 47.665752,-122.106357],
+                    ["Islamic Center of Eastside", 47.629135,-122.150948],
+                    ["Masjid Madeena", 47.617809,-122.122213],
+                    ["Evergreen Islamic Institute(Dar ul arqam)", 47.827845, -122.317267],
+                    ["Downtown Muslim Association of Seattle", 47.608671,-122.33625],
+                    ["Sammamish Mosque", 47.951182,-122.045801],
+                    ["High Point Masjid", 47.543020,-122.376108],
+                    ["Masjid Al-Furqan", 47.518929,-122.358270],
+                    ["Masjid At-Tawhid (West Seattle Masjid)", 47.518493,-122.355496],
+                    ["Gethsemane Lutheran Church", 47.615681,-122.333925],
+                    ["Al-Mahdi Islamic Center", 47.504634,-122.335405],
+                    ["Alsalam Islamic Center", 47.488961,-122.311789],
+                    ["Ababukar Mosque of Washington", 47.552115,-122.289046],
+                    ["Gambia Masjid", 47.549561,-122.277487],
+                    ["Oareao OCC Masjid", 47.523989,-122.276219],
+                    ["Al Karim Islamic Center", 47.608677,-122.299857],
+                    ["Islamic Center of Tukwila(AbuBakar Mosque)", 47.476969,-122.284662],
+                    ["Islamic Center of Seattle(Cham Mosque)", 47.469244,-122.292893],
+                    ["Ethiopian Muslims Association of Seattle", 47.455047,-122.285022],
+                    ["Islamic Center of Kent", 47.414223,-122.198136],
+                    ["Al-Huda Masjid ", 47.371209,-122.205856],
+                    ["Islamic Center of Federal Way", 47.358198,-122.289950],
+                    ["Snoqualmie Mosque (Muslim Association of Snoqualmie Ridge)", 47.527911,-121.868832],
+                    ["Islamic Center of Tacoma", 47.241416,-122.537730],
+                    ["Redmond Ridge Mosque", 47.698486,-122.015719],
+                    ["Islamic Center of Olympia(Masjid Nur)", 47.063403,-122.828345],
+                    ["Masjid Feidul-Islam Olympia Lacey Islamic Center", 47.038858,-122.770613],
 
+                ]       
+            
+                var mosqueMarker, count;
                 
-                var islamicHouseMarker = new google.maps.Marker({ position: islamicHouse, map: map });
+                for (count = 0; count < mosqueLocations.length; count++){
+                    mosqueMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(mosqueLocations[count][1], mosqueLocations[count][2]),
+                        title: mosqueLocations[count][0],
+                        map: map
+                    })
+                }
+                
+                var mosqueInfowindow = new google.maps.InfoWindow({})
 
-                var infowindow = new google.maps.InfoWindow({
-                    content: "Islamic House",
+                mosqueMarker.addListener('click', function(count) {
+                    mosqueInfowindow.setContent(mosqueLocations[count][0]),
+                    console.log(mosqueLocations)
+                    mosqueInfowindow.open(map, mosqueMarker)
+
+
                 })
 
-                islamicHouseMarker.addListener('click', function() {
-                    infowindow.open(map, islamicHouseMarker)
 
-                }) 
-            }
+
+            
+                if (navigator.geolocation) {
+                    var positionOptions = {
+                        enableHighAccuracy: true,
+                        timeout: 5000
+                    };
+
+                    navigator.geolocation.getCurrentPosition(function(position, positionOptions) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+                        var userLocationMarker = new google.maps.Marker({ position: pos, map: map,  })
+                        var locationInfoWindow = new google.maps.InfoWindow({
+                            content: "You are here."
+
+                        })
+                        userLocationMarker.addListener('click', function(){
+                            locationInfoWindow.open(map, userLocationMarker)
+
+                        })
+                    }, function() {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                    } else {
+                        // Browser doesn't support Geolocation
+                        handleLocationError(false, infoWindow, map.getCenter());
+                    }
+                }
+        
+                function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent(browserHasGeolocation ?
+                                        'Error: The Geolocation service failed.' :
+                                        'Error: Your browser doesn\'t support geolocation.');
+                    infoWindow.open(map);
+                }
+
         </script>
         <!--Load the API from the specified URL
         * The async attribute allows the browser to render the page while the API loads

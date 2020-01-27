@@ -1,0 +1,15 @@
+.avater-img {
+    border-radius: 50%;
+    width: 10%;
+}
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+hr {
+    border-color: black;
+}

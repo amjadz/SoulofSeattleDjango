@@ -6,42 +6,72 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
 </head>
-<style>
-
-    img {
-        border-radius: 50%;
-        width: 10%;
-
-    }
-
-
-
-</style>
 
 <body>
     <header class="pt-5 pl-5">
         <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <a href="/">Home</a>
+            <div class="pl-4">
+                {% load static %}
+                <img class="center-image" src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
+
+              
+                <div class="row pt-5">
+                    <div class="col-sm">
+                        <a href="/">Home</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="mosquemap">Mosque Map</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="community">Community</a>
+                    </div>
+                    <div class="col-sm">
+                        <a href="calender">Calender</a>
+            
+                    </div>
+                    <div class="col-sm">
+                        <a href="resources">Resources</a>
+                    </div>
                 </div>
-                <div class="col-sm">
-                    <a href="mosquemap">Mosque Map</a>
-                </div>
-                <div class="col-sm">
-                    <a href="community">Community</a>
-                </div>
-                <div class="col-sm">
-                    <a href="calender">Calender</a>
-        
-                </div>
-                <div class="col-sm">
-                    <a href="resources">Resources</a>
+            </div>
+                <hr>
+                <div class="pt-2">
+                    <div class="row">
+                        <div class="col-sm">
+                            <a href="#">Lifestyle</a>
+                        </div>
     
-                </div>
+                        <div class="col-sm">
+                            <a href="#">Poltics</a>
+                        </div>
+    
+                        <div class="col-sm">
+                            <a href="#">Opinion</a>
+                        </div>
+    
+                        <div class="col-sm">
+                            <a href="#">Food</a>
+                        </div>
+    
+                        <div class="col-sm">
+                            <a href="#">Travel</a>
+                        </div>
+    
+                        <div class="col-sm">
+                            <a href="#">Health</a>
+                        </div>
+    
+                        <div class="col-sm">
+                            <a href="#">Tech</a>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
             </div>
         </header>

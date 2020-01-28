@@ -11,6 +11,8 @@
     <link rel="styleheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
+
+    
 </head>
 
 <body>
@@ -18,7 +20,7 @@
         <div class="container">
             <div class="pl-4">
                 {% load static %}
-                <img  src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
+                <img class = "radius-of_image" src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
 
                 <div class="row pt-5">
                     <div class="col-sm">
@@ -86,6 +88,23 @@
             {% endfor %}
         </div>
     </section>
+
+    <section>
+        <div class="container">
+            {% for article in article %}
+            <h1>About {{ article.author }}</h1>
+            <div class="row">
+                <div class="col-sm">
+                    <img class = "radius-of_image" src="{{ article.upload_image }}" alt="{{ article.author }}">
+                </div>
+                <div class="col-sm">
+                    <p class="card-text ">{{ article.author_biography | safe | linebreaks}} </p>
+                </div>    
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
 
     <section>
         <div class="container">

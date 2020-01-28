@@ -31,7 +31,15 @@ def article(request, slug):
     return render(request, 'article.htm', article_info)
 
 def lifestyle(request):
-    return render(request, 'categories/lifestyle.htm')
+    if request.method == 'GET':
+
+        lifestyle_article = Post.objects.filter(category='lifestyle').values()
+
+        lifestyle_articles = {
+            "lifestyle_articles": lifestyle_article
+        }
+
+    return render(request, 'categories/lifestyle.htm', lifestyle_articles)
 
 def politics(request):
     return render(request, 'categories/politics.htm')

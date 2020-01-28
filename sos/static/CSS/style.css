@@ -13,3 +13,8 @@
 hr {
     border-color: black;
 }
+
+.radius-of_image {
+    border-radius: 50%;
+
+}

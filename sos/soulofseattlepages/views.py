@@ -30,6 +30,33 @@ def article(request, slug):
 
     return render(request, 'article.htm', article_info)
 
+def lifestyle(request):
+    return render(request, 'categories/lifestyle.htm')
+
+def politics(request):
+    return render(request, 'categories/politics.htm')
+
+def opinion(request):
+    return render(request, 'categories/opinion.htm')
+
+def food(request):
+    return render(request, 'categories/food.htm')
+
+def travel(request):
+    return render(request, 'categories/travel.htm')
+
+def health(request):
+    return render(request, 'categories/health.htm')
+
+def tech(request):
+    return render(request, 'categories/tech.htm')
+
+
+
+
+
+
+
 def resources(request):
     return render(request, 'resources.htm')
 

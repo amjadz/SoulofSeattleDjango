@@ -8,7 +8,7 @@
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
+    <link rel="styleheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
 </head>
@@ -18,25 +18,24 @@
         <div class="container">
             <div class="pl-4">
                 {% load static %}
-                <img class="center-image" src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
+                <img  src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
 
-              
                 <div class="row pt-5">
                     <div class="col-sm">
-                        <a href="/">Home</a>
+                        <a href="{% url 'Hompeage'%}">Home</a>
                     </div>
                     <div class="col-sm">
-                        <a href="mosquemap">Mosque Map</a>
+                        <a href="{% url 'MosqueMap' %}">Mosque Map</a>
                     </div>
                     <div class="col-sm">
-                        <a href="community">Community</a>
+                        <a href="{% url 'Community' %}">Community</a>
                     </div>
                     <div class="col-sm">
-                        <a href="calender">Calender</a>
+                        <a href="{% url 'Calender' %}">Calender</a>
             
                     </div>
                     <div class="col-sm">
-                        <a href="resources">Resources</a>
+                        <a href="{% url 'Resources' %}">Resources</a>
                     </div>
                 </div>
             </div>
@@ -44,31 +43,31 @@
                 <div class="pt-2">
                     <div class="row">
                         <div class="col-sm">
-                            <a href="#">Lifestyle</a>
+                            <a href="{% url 'Lifestyle'%}">Lifestyle</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Poltics</a>
+                            <a href="{% url 'Politics'%}">Poltics</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Opinion</a>
+                            <a href="{% url 'Opinion'%}">Opinion</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Food</a>
+                            <a href="{% url 'Food'%}">Food</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Travel</a>
+                            <a href="{% url 'Travel'%}">Travel</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Health</a>
+                            <a href="{% url 'Health'%}">Health</a>
                         </div>
     
                         <div class="col-sm">
-                            <a href="#">Tech</a>
+                            <a href="{% url 'Tech'%}">Tech</a>
                         </div>
                     </div>
                     <hr>
@@ -87,7 +86,7 @@
                                 <h2 class="card-title">{{ article.title }}</h2>
                                 <p class="card-text text-muted h6"> <img src="article/{{ article.upload_image }}"> | {{ article.author }} | {{ article.created_on | date}} </p>
                                 <p class="card-text">{{article.content|slice:":200" }}</p>
-                                <a href="article/{{ article.slug }}" class="btn btn-primary">Read More &rarr;</a>
+                                <a href="{% url 'Article' article.slug %}" class="btn btn-primary">Read More &rarr;</a>
                             </div>
                         </div>
                         {% endfor %}

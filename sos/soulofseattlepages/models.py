@@ -20,6 +20,7 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     tags = TaggableManager()
+    category = models.CharField(default="N/A",max_length=200)
 
     class Meta:
         ordering = ['-created_on']

@@ -21,30 +21,28 @@
 
 <body>
     <header class="pt-5 pl-5">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <a href="/">Home</a>
-                    </div>
-                    <div class="col-sm">
-                        <a href="mosquemap">Mosque Map</a>
-                    </div>
-                    <div class="col-sm">
-                        <a href="community">Community</a>
-                    </div>
-
-                    <div class="col-sm">
-                        <a href="calender">Calender</a>
-
-                    </div>
-                    <div class="col-sm">
-                        <a href="resources">Resources</a>
-
-                    </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <a href="{% url 'Hompeage'%}">Home</a>
+                </div>
+                <div class="col-sm">
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                </div>
+                <div class="col-sm">
+                    <a href="{% url 'Community' %}">Community</a>
+                </div>
+                <div class="col-sm">
+                    <a href="{% url 'Calender' %}">Calender</a>
+        
+                </div>
+                <div class="col-sm">
+                    <a href="{% url 'Resources' %}">Resources</a>
                 </div>
             </div>
+        </div>
     </header>
-
+    
     <section class="pt-5">
         <!--The div element for the map -->
         <div id="map"></div>

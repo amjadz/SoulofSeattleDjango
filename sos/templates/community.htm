@@ -16,22 +16,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <a href="/">Home</a>
+                    <a href="{% url 'Hompeage'%}">Home</a>
                 </div>
                 <div class="col-sm">
-                    <a href="mosquemap">Mosque Map</a>
-
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
                 </div>
                 <div class="col-sm">
-                    <a href="community">Community</a>
+                    <a href="{% url 'Community' %}">Community</a>
                 </div>
-
                 <div class="col-sm">
-                    <a href="calender">Calender</a>
+                    <a href="{% url 'Calender' %}">Calender</a>
+        
                 </div>
-
                 <div class="col-sm">
-                    <a href="resources">Resources</a>
+                    <a href="{% url 'Resources' %}">Resources</a>
                 </div>
             </div>
         </div>

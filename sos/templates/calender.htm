@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+
     <title>Soul of Seattle</title>
 
 </head>
@@ -17,21 +18,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <a href="/">Home</a>
+                    <a href="{% url 'Hompeage'%}">Home</a>
                 </div>
                 <div class="col-sm">
-                    <a href="mosquemap">Mosque Map</a>
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
                 </div>
                 <div class="col-sm">
-                    <a href="community">Community</a>
+                    <a href="{% url 'Community' %}">Community</a>
                 </div>
                 <div class="col-sm">
-                    <a href="calender">Calender</a>
-
+                    <a href="{% url 'Calender' %}">Calender</a>
+        
                 </div>
                 <div class="col-sm">
-                    <a href="resources">Resources</a>
-
+                    <a href="{% url 'Resources' %}">Resources</a>
                 </div>
             </div>
         </div>

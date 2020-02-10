@@ -9,10 +9,10 @@ STATUS = (
     (1,"Publish")
 )
 
-class Post(models.Model):
+class Post(models.Model): #use documentation to help https://docs.djangoproject.com/en/3.0/topics/db/models/
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
-    author = models.CharField(max_length=200, unique=True)
+    author = models.CharField(max_length=200, unique=True) #add foriegn key to authors relating to title
     author_biography = models.TextField(default="N/A")
     updated_on = models.DateTimeField(auto_now= True)
     content = models.TextField()

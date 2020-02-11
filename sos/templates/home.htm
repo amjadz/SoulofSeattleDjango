@@ -79,7 +79,7 @@
         </div>
                 <div class="row">
                     <!-- Blog Entries Column -->
-                    {% for article in articles %}
+                    {% for article in articles|slice:"1:"  %}
                
                     <div class="col-sm-4 mt-4 ">
                         <div class="card mb-4">

@@ -90,7 +90,7 @@
                                 <a href="{% url 'Article' article.slug %}" class="btn btn-primary">Read More &rarr;</a>
                             </div>
                         </div>
-                    {% if forloop.counter|divisibleby:"4" and not forloop.last %}
+                    {% if forloop.counter|divisibleby:"10" and not forloop.last %}
                         <div class="row">
                             {% endif %}
 

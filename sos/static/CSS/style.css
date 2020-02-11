@@ -1,3 +1,8 @@
+body, html {
+    background-color: #ecf0f1;
+    font-family: 'Playfair Display', serif;
+}
+
 .avater-img {
     border-radius: 50%;
     width: 10%;
@@ -30,4 +35,13 @@ hr {
 #map {
     height: 400px;
     width: 100%;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.padding-article-nav-item {
+    padding-bottom: 50px;
+
 }

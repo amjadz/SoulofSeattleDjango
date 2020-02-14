@@ -68,6 +68,8 @@
         <div class="container">
             <h1>Mosques Near You:</h1>
             <h4 id = "name"></h4>
+            <h4 id = "mosquediv"></h4>
+
 
         </div>
        
@@ -206,6 +208,7 @@
                 }
 
                 function nearbyCallback(results, status) {
+                    var mosquediv = document.getElementById("mosque1")
                     var nameContainer = document.getElementById("name")
                     var imgContainer = document.getElementById("img")
                     if (status == google.maps.places.PlacesServiceStatus.OK) {
@@ -213,6 +216,7 @@
                             var div = document.createElement("div")
                             div.innerHTML = results[count]["name"]
                             nameContainer.appendChild(div)
+                            
                             console.log(results[count])
 
                         }

@@ -3,43 +3,42 @@ from django.http import HttpResponse
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
-from .models import Post
+from .models import author, userPost
 from taggit.models import Tag
 
 
-# Create your views here.
+#Create your views here.
 
 def home(request):
     if request.method == 'GET':
-        queryset = Post.objects.filter(status=1).order_by('-created_on')
+        queryset = userPost.objects.filter(post_Status=1).order_by('-post_CreatedOn')
 
         articles = {
             "articles": queryset
         }
-
     return render(request, 'home.htm', articles)
 
-def article(request, slug):
-    article = Post.objects.filter(slug=slug).values()
-    related_articles = Post.objects.get(slug=slug)
+#def article(request, slug):
+    #article = Post.objects.filter(slug=slug).values()
+    #related_articles = Post.objects.get(slug=slug)
 
-    article_info = {
-        "article": article,
-        "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
-    }
+    #article_info = {
+       # "article": article,
+        #"related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
+    #}
 
-    return render(request, 'article.htm', article_info)
+    #return render(request, 'article.htm')
 
 def lifestyle(request):
-    if request.method == 'GET':
+   # if request.method == 'GET':
 
-        lifestyle_article = Post.objects.filter(category='lifestyle').values()
+        #lifestyle_article = Post.objects.filter(category='lifestyle').values()
 
-        lifestyle_articles = {
-            "lifestyle_articles": lifestyle_article
-        }
+        #lifestyle_articles = {
+            #"lifestyle_articles": lifestyle_article
+        #}
 
-    return render(request, 'categories/lifestyle.htm', lifestyle_articles)
+    return render(request, 'categories/lifestyle.htm')
 
 def politics(request):
     return render(request, 'categories/politics.htm')

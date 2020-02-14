@@ -5,7 +5,7 @@ from . import views
 
 urlpatterns = [ 
     path('', views.home, name="Hompeage"),
-    path('article/<slug:slug>', views.article, name="Article"),
+    #path('article/<slug:slug>', views.article, name="Article"),
     path('resources', views.resources, name="Resources"),
     path('mosquemap', views.mosquemap, name="MosqueMap"),
     path('community', views.community, name="Community"),

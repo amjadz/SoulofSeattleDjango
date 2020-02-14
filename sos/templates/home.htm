@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
 
@@ -17,83 +18,129 @@
     <header class="pt-5 pl-5">
         <div class="container">
             <div class="pl-4">
-                {% load static %}
-                <img class="center-image" src="{% static "images/SoulofSeattleLogo.png" %}" alt="logo">
-
+                
+                <h1 class="center-text">Soul of Seattle</h1>
+        
                 <div class="row pt-5">
                     <div class="col-sm">
-                        <a href="{% url 'Hompeage'%}">Home</a>
+                        <ul class="nav">
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Article</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
+                                    <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
+                                    <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
+                                    <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
+                                    <a class="dropdown-item" href="{% url 'Food'%}">Food</a>
+                                    <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
+                                    <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
+                                    <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
+                                </div>
+                            </li>
+
+                        </ul>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm pt-2">
                         <a href="{% url 'MosqueMap' %}">Mosque Map</a>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm pt-2">
                         <a href="{% url 'Community' %}">Community</a>
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm pt-2">
                         <a href="{% url 'Calender' %}">Calender</a>
-            
+
                     </div>
-                    <div class="col-sm">
+                    <div class="col-sm pt-2">
                         <a href="{% url 'Resources' %}">Resources</a>
                     </div>
                 </div>
             </div>
-                <hr>
-                <div class="pt-2">
-                    <div class="row">
-                        <div class="col-sm">
-                            <a href="{% url 'Lifestyle'%}">Lifestyle</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Politics'%}">Poltics</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Opinion'%}">Opinion</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Food'%}">Food</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Travel'%}">Travel</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Health'%}">Health</a>
-                        </div>
-    
-                        <div class="col-sm">
-                            <a href="{% url 'Tech'%}">Tech</a>
-                        </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-        </header>
+        </div>
+    </header>
 
-    <section class="pt-5 pl-5">
+    <section class="pt-5 pl-5 mt-5">
         <div class="container">
-                <div class="row">
-                    <!-- Blog Entries Column -->
-                    <div class="col-md-8 mt-3 left">
-                        {% for article in articles %}
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h2 class="card-title">{{ article.post_Title }}</h2>
-                                <p class="card-text text-muted h6"> <img class="image-size radius-of_image" src="article/{{ article.post_UploadImage }}"> | {{ article.author}} | {{ article.post_CreatedOn | date}} </p>
-                                <p class="card-text">{{article.post_Content|slice:":200" }}</p>
-                                
-                            </div>
+            <div class="row mb-5">
+                {% for article in articles %}
+                {% if forloop.first %}
+                <div class="col-md-6 mt-4">
+                     <a href="{% url 'Article' article.post_Slug %}" > 
+                        <div class="padding-top-article">
+                            <h5>{{ article.post_Category }}</h5>
+                            <h1>{{ article.post_Title  }}</h1>
+                            <p>{{article.post_Content|slice:":200" }}</p>
+                            <h6>{{ article.author }} | {{ article.post_CreatedOn| date}} </h6>                            
                         </div>
-                        {% endfor %}
+                        </a> 
                     </div>
+                    <img class="padding-top-article" src="https://via.placeholder.com/400.png/09f/fff"  alt="{{ article.author }}">
+
+                </div>
+  
+            {% endif %}
+            {% endfor %}
+             
+
+            <div class="row padding-top-down">
+                {% for article in articles|slice:"1:"  %}
+                <!-- Blog Entries Column -->
+
+                <div class="col-sm-4 col-md mt-4 ">
+                    <div class=" mb-4">
+                        <div class="card-body">
+                            <a href="{% url 'Article' article.post_Slug %}">
+                                <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
+                                <h6>{{ article.post_Category }}</h6>
+                                <h2>{{ article.post_Title }}</h2>  
+                                <h5>{{ article.post_CreatedOn | date}}</h5>
+                                <p>{{article.post_Content|slice:":200" }}   </p>
+                                <p>{{ article.author}}</p>
+
+                            </a>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:"10" and not forloop.last %}
+                    <div class="row">
+                        {% endif %}
+
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
+        </div>
     </section>
 
+    <footer class="footer-padding">
+
+
+                <div class="col-sm pt-2">
+                    <a href="{% url 'Resources' %}">Resources</a>
+                </div>
+                <div class="col-sm pt-2">
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                </div>
+                <div class="col-sm pt-2">
+                    <a href="{% url 'Community' %}">Community</a>
+                </div>
+                <div class="col-sm pt-2">
+                    <a href="{% url 'Calender' %}">Calender</a>
+
+                </div>
+            </div>
+        </div>
+
+
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 </html>

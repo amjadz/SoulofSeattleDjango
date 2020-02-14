@@ -14,26 +14,47 @@
 <body>
     <header class="pt-5 pl-5">
         <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <a href="{% url 'Hompeage'%}">Home</a>
-                </div>
-                <div class="col-sm">
-                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
-                </div>
-                <div class="col-sm">
-                    <a href="{% url 'Community' %}">Community</a>
-                </div>
-                <div class="col-sm">
-                    <a href="{% url 'Calender' %}">Calender</a>
-        
-                </div>
-                <div class="col-sm">
-                    <a href="{% url 'Resources' %}">Resources</a>
+            <div class="pl-4">
+                {% load static %}
+                <b>
+                    <h1 class="center-text ">Soul of Seattle</h1>
+                </b>
+
+                <div class="row pt-5">
+                    <div class="col-sm">
+                        <ul class="nav">
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'Hompeage'%}" role="button" aria-haspopup="true" aria-expanded="false">Article</a>
+                                <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
+                                  <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
+                                  <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
+                                  <a class="dropdown-item" href="{% url 'Food'%}">Food</a>
+                                  <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
+                                  <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
+                                  <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
+                                </div>
+                              </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-sm pt-2">
+                        <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                    </div>
+                    <div class="col-sm pt-2">
+                        <a href="{% url 'Community' %}">Community</a>
+                    </div>
+                    <div class="col-sm pt-2">
+                        <a href="{% url 'Calender' %}">Calender</a>
+            
+                    </div>
+                    <div class="col-sm pt-2">
+                        <a href="{% url 'Resources' %}">Resources</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+            </div>
+        </header>
 
 
     <section class="pt-5">

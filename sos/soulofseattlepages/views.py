@@ -18,16 +18,16 @@ def home(request):
         }
     return render(request, 'home.htm', articles)
 
-#def article(request, slug):
-    #article = Post.objects.filter(slug=slug).values()
-    #related_articles = Post.objects.get(slug=slug)
+def article(request, post_Slug):
+    article = userPost.objects.filter(post_Slug=post_Slug).values()
+    related_articles = userPost.objects.get(post_Slug=post_Slug)
 
-    #article_info = {
-       # "article": article,
-        #"related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
-    #}
+    article_info = {
+        "article": article,
+        "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
+    }
 
-    #return render(request, 'article.htm')
+    return render(request, 'article.htm')
 
 def lifestyle(request):
    # if request.method == 'GET':

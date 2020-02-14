@@ -19,9 +19,8 @@
         <div class="container">
             <div class="pl-4">
                 
-                <h1 class="center-text ">Soul of Seattle</h1>
-            
-
+                <h1 class="center-text">Soul of Seattle</h1>
+        
                 <div class="row pt-5">
                     <div class="col-sm">
                         <ul class="nav">
@@ -29,6 +28,7 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="true" aria-expanded="false">Article</a>
                                 <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
                                     <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
                                     <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
                                     <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
@@ -74,18 +74,19 @@
                         </div>
                         </a>
                     </div>
+                    <img class="padding-top-article" src="https://via.placeholder.com/400.png/09f/fff"  alt="{{ article.author }}">
 
-                    <img class="padding-top-article" src="https://via.placeholder.com/300.png/09f/fff"  alt="{{ article.author }}">
                 </div>
   
             {% endif %}
             {% endfor %}
+             
 
-            <div class="row">
+            <div class="row padding-top-down">
                 {% for article in articles|slice:"1:"  %}
                 <!-- Blog Entries Column -->
 
-                <div class="col-sm-4 mt-4 ">
+                <div class="col-sm-4 col-md mt-4 ">
                     <div class=" mb-4">
                         <div class="card-body">
                             <a href="{% url 'Article' article.slug %}">
@@ -116,9 +117,10 @@
                 <div class="col-sm">
                     <ul class="nav">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                            <a class="center-text nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false">Article</a>
                             <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
                                 <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
                                 <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
                                 <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
@@ -145,8 +147,6 @@
                     <a href="{% url 'Calender' %}">Calender</a>
 
                 </div>
-   
-
             </div>
         </div>
 

@@ -51,7 +51,15 @@ def food(request):
     return render(request, 'categories/food.htm')
 
 def travel(request):
-    return render(request, 'categories/travel.htm')
+    if request.method == 'GET':
+
+        travel_article = userPost.objects.filter(post_Category='Travel').values()
+
+        travel_articles = {
+            "travel_articles": travel_article
+        }
+    
+    return render(request, 'categories/travel.htm', travel_articles)
 
 def health(request):
     return render(request, 'categories/health.htm')

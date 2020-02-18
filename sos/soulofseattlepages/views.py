@@ -42,7 +42,15 @@ def lifestyle(request):
     return render(request, 'categories/lifestyle.htm')
 
 def politics(request):
-    return render(request, 'categories/politics.htm')
+    if request.method == 'GET':
+
+        politics_article = userPost.objects.filter(post_Category='Politics').values()
+
+        politics_articles = {
+            "politics_articles": politics_article
+
+        }
+    return render(request, 'categories/politics.htm', politics_articles)
 
 def opinion(request):
     return render(request, 'categories/opinion.htm')

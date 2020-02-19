@@ -53,7 +53,17 @@ def politics(request):
     return render(request, 'categories/politics.htm', politics_articles)
 
 def opinion(request):
-    return render(request, 'categories/opinion.htm')
+
+    if request.method == 'GET':
+        
+        opinion_article = userPost.objects.filter(post_Category='Opinion').values()
+
+        opinion_articles = {
+            "opinion_articles": opinion_article
+        }
+
+
+    return render(request, 'categories/opinion.htm', opinion_articles)
 
 def food(request):
     return render(request, 'categories/food.htm')
@@ -70,7 +80,17 @@ def travel(request):
     return render(request, 'categories/travel.htm', travel_articles)
 
 def health(request):
-    return render(request, 'categories/health.htm')
+    if request.method == 'GET':
+
+        health_article = userPost.objects.filter(post_Category='Health').values()
+
+        health_articles = {
+            "health_articles": health_article
+
+        }
+
+
+    return render(request, 'categories/health.htm', health_article)
 
 def tech(request):
     return render(request, 'categories/tech.htm')

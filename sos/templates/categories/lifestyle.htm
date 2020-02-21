@@ -68,10 +68,10 @@
                             {% for lifestyle_article in lifestyle_articles %}
                             <div class="card mb-4">
                                 <div class="card-body">
-                                    <h2 class="card-title">{{ lifestyle_article.title }}</h2>
+                                    <h2 class="card-title">{{ lifestyle_article.post_Title }}</h2>
                                     <p class="card-text text-muted h6"> <img src="article/{{ lifestyle_article.upload_image }}"> | {{ lifestyle_article.author }} | {{ lifestyle_article.created_on | date}} </p>
                                     <p class="card-text">{{lifestyle_article.content|slice:":200" }}</p>
-                                    <a href="{% url 'Article' lifestyle_article.slug %}" class="btn btn-primary">Read More &rarr;</a>
+                                    <a href="{% url 'Article' lifestyle_article.post_Slug %}" class="btn btn-primary">Read More &rarr;</a>
                                 </div>
                             </div>
                             {% endfor %}

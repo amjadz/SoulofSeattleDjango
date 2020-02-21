@@ -59,6 +59,37 @@
             </div>
             </div>
         </header>
+
+
+        <section>
+            <div class="container">
+                <div class="row padding-top-down">
+                    {% for opinion_article in opinion_articles  %}
+                    <!-- Blog Entries Column -->
+                    <div class="col-sm-4 col-md mt-4 ">
+                        <div class=" mb-4">
+                            <div class="card-body">
+                                <a href="{% url 'Article' opinion_article.post_Slug %}">
+                                    <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
+                                    <h6>{{ opinion_article.post_Category }}</h6>
+                                    <h2>{{ opinion_article.post_Title }}</h2>  
+                                    <h5>{{ opinion_article.post_CreatedOn | date}}</h5>
+                                    <p>{{opinion_article.post_Content|slice:":200" }}   </p>
+                                    <p>{{ opinion_article.author}}</p>
+    
+                                </a>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:"10" and not forloop.last %}
+                        <div class="row">
+                            {% endif %}
+    
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
     
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

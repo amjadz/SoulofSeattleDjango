@@ -31,15 +31,13 @@ def article(request, post_Slug):
     return render(request, 'article.htm', article_info)
 
 def lifestyle(request):
-   # if request.method == 'GET':
-
-        #lifestyle_article = Post.objects.filter(category='lifestyle').values()
-
-        #lifestyle_articles = {
-            #"lifestyle_articles": lifestyle_article
-        #}
-
-    return render(request, 'categories/lifestyle.htm')
+    if request.method == 'GET':
+        lifestyle_article = userPost.objects.filter(post_Category='Lifestyle').values() 
+        
+        lifestyle_articles = {
+            "lifestyle_articles": lifestyle_article
+        }
+    return render(request, 'categories/lifestyle.htm', lifestyle_articles)
 
 def politics(request):
     if request.method == 'GET':
@@ -66,7 +64,13 @@ def opinion(request):
     return render(request, 'categories/opinion.htm', opinion_articles)
 
 def food(request):
-    return render(request, 'categories/food.htm')
+    if request.method == 'GET':
+        food_article = userPost.objects.filter(post_Category='food').values()
+        
+        food_articles = {
+            "food_articles": food_article
+        }
+    return render(request, 'categories/food.htm', food_article)
 
 def travel(request):
     if request.method == 'GET':
@@ -93,7 +97,13 @@ def health(request):
     return render(request, 'categories/health.htm', health_article)
 
 def tech(request):
-    return render(request, 'categories/tech.htm')
+    if request.method == 'GET':
+        tech_article = userPost.objects.filter(post_Category='tech').values()
+        
+        tech_articles = {
+            "tech_articles": tech_article
+        }
+    return render(request, 'categories/tech.htm', tech_article)
 
 
 

@@ -1,6 +1,29 @@
+/* @media(max-width: 425px){
+    .padding-top-article {
+        padding-right: 10px;
+
+    }
+
+
+} */
+
 body, html {
     background-color: white;
     font-family: 'Playfair Display', serif;
+}
+
+h1, h5 ,h6 {
+    color: #040404;
+}
+
+a:link, a:hover {
+    text-decoration: none;
+
+}
+
+p {
+    color: #B3B3B3;
+
 }
 
 .avater-img {
@@ -59,5 +82,10 @@ hr {
 }
 .padding-top-down {
     padding-top: 120px;
-    /* padding-bottom: 100px; */
+}
+
+.footer-link-padding {
+
+    padding-left: 290px;
+
 }

@@ -18,9 +18,10 @@
     <header class="pt-5 pl-5">
         <div class="container">
             <div class="pl-4">
-                
+
                 <h1 class="center-text">Soul of Seattle</h1>
                 <div class="row pt-5">
+
                     <div class="col-sm">
                         <ul class="nav">
                             <li class="nav-item dropdown ">
@@ -55,31 +56,33 @@
                     </div>
                 </div>
             </div>
+            <hr>
         </div>
     </header>
 
-    <section class="pt-5 pl-5 mt-5">
+    <section class="pt-5 pl-5">
         <div class="container">
             <div class="row mb-5">
                 {% for article in articles %}
                 {% if forloop.first %}
-                <div class="col-md-6 mt-4">
-                     <a href="{% url 'Article' article.post_Slug %}" > 
+                <div class="col-lg-6 mt-4">
+                    <a href="{% url 'Article' article.post_Slug %}">
                         <div class="padding-top-article">
                             <h5>{{ article.post_Category }}</h5>
                             <h1>{{ article.post_Title  }}</h1>
                             <p>{{article.post_Content|slice:":200" }}</p>
-                            <h6>{{ article.author }} | {{ article.post_CreatedOn| date}} </h6>                            
+                            <h6>{{ article.author }} | {{ article.post_CreatedOn| date}} </h6>
                         </div>
-                        </a> 
-                    </div>
-                    <img class="padding-top-article" src="https://via.placeholder.com/400.png/09f/fff"  alt="{{ article.author }}">
-
+                    </a>
                 </div>
-  
+                <img class="padding-top-article" src="https://via.placeholder.com/400.png/09f/fff"
+                    alt="{{ article.author }}">
+
+            </div>
+
             {% endif %}
             {% endfor %}
-             
+
 
             <div class="row padding-top-down">
                 {% for article in articles|slice:"1:"  %}
@@ -89,11 +92,11 @@
                     <div class=" mb-4">
                         <div class="card-body">
                             <a href="{% url 'Article' article.post_Slug %}">
-                                <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
+                                <img class="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
                                 <h6>{{ article.post_Category }}</h6>
-                                <h2>{{ article.post_Title }}</h2>  
+                                <h2>{{ article.post_Title }}</h2>
                                 <h5>{{ article.post_CreatedOn | date}}</h5>
-                                <p>{{article.post_Content|slice:":200" }}   </p>
+                                <p>{{article.post_Content|slice:":200" }} </p>
                                 <p>{{ article.author}}</p>
 
                             </a>
@@ -111,35 +114,72 @@
     </section>
 
     <footer class="footer-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <h5 class="pt-2">Soul of Seattle</h5>
 
+                </div>
+                <div class="col-sm">
 
-                <div class="col-sm pt-2">
-                    <a href="{% url 'Resources' %}">Resources</a>
+                    <ul class="nav">
+                        <li class="nav-item dropdown ">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                aria-haspopup="true" aria-expanded="false">Article</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
+                                <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
+                                <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
+                                <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
+                                <a class="dropdown-item" href="{% url 'Food'%}">Food</a>
+                                <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
+                                <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
+                                <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
+                            </div>
+                        </li>
+
+                    </ul>
                 </div>
                 <div class="col-sm pt-2">
                     <a href="{% url 'MosqueMap' %}">Mosque Map</a>
                 </div>
+
                 <div class="col-sm pt-2">
+                    <a href="{% url 'Resources' %}">Resources</a>
+                </div>
+
+            </div>
+            <div class="row pl-4 pt-3">
+                <div class="col-sm pt-2 footer-link-padding">
                     <a href="{% url 'Community' %}">Community</a>
                 </div>
                 <div class="col-sm pt-2">
                     <a href="{% url 'Calender' %}">Calender</a>
+                </div>
+
+                <div class="col-sm  pt-2">
+                    <a href="#">About Us</a>
 
                 </div>
+
             </div>
+        
         </div>
-
-
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
+
+
+
+
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
 </html>

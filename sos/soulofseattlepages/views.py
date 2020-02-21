@@ -65,12 +65,12 @@ def opinion(request):
 
 def food(request):
     if request.method == 'GET':
-        food_article = userPost.objects.filter(post_Category='food').values()
+        food_article = userPost.objects.filter(post_Category='Food').values()
         
         food_articles = {
             "food_articles": food_article
         }
-    return render(request, 'categories/food.htm', food_article)
+    return render(request, 'categories/food.htm', food_articles)
 
 def travel(request):
     if request.method == 'GET':
@@ -94,16 +94,16 @@ def health(request):
         }
 
 
-    return render(request, 'categories/health.htm', health_article)
+    return render(request, 'categories/health.htm', health_articles)
 
 def tech(request):
     if request.method == 'GET':
-        tech_article = userPost.objects.filter(post_Category='tech').values()
+        tech_article = userPost.objects.filter(post_Category='Tech').values()
         
         tech_articles = {
             "tech_articles": tech_article
         }
-    return render(request, 'categories/tech.htm', tech_article)
+    return render(request, 'categories/tech.htm', tech_articles)
 
 
 

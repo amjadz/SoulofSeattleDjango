@@ -22,12 +22,13 @@ def article(request, post_Slug):
     article = userPost.objects.filter(post_Slug=post_Slug).values()
     related_articles = userPost.objects.get(post_Slug=post_Slug)
 
+
     article_info = {
         "article": article,
         "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
     }
 
-    return render(request, 'article.htm')
+    return render(request, 'article.htm', article_info)
 
 def lifestyle(request):
     if request.method == 'GET':
@@ -39,10 +40,28 @@ def lifestyle(request):
     return render(request, 'categories/lifestyle.htm', lifestyle_articles)
 
 def politics(request):
-    return render(request, 'categories/politics.htm')
+    if request.method == 'GET':
+
+        politics_article = userPost.objects.filter(post_Category='Politics').values()
+
+        politics_articles = {
+            "politics_articles": politics_article
+
+        }
+    return render(request, 'categories/politics.htm', politics_articles)
 
 def opinion(request):
-    return render(request, 'categories/opinion.htm')
+
+    if request.method == 'GET':
+        
+        opinion_article = userPost.objects.filter(post_Category='Opinion').values()
+
+        opinion_articles = {
+            "opinion_articles": opinion_article
+        }
+
+
+    return render(request, 'categories/opinion.htm', opinion_articles)
 
 def food(request):
     if request.method == 'GET':
@@ -54,10 +73,28 @@ def food(request):
     return render(request, 'categories/food.htm', food_article)
 
 def travel(request):
-    return render(request, 'categories/travel.htm')
+    if request.method == 'GET':
+
+        travel_article = userPost.objects.filter(post_Category='Travel').values()
+
+        travel_articles = {
+            "travel_articles": travel_article
+        }
+    
+    return render(request, 'categories/travel.htm', travel_articles)
 
 def health(request):
-    return render(request, 'categories/health.htm')
+    if request.method == 'GET':
+
+        health_article = userPost.objects.filter(post_Category='Health').values()
+
+        health_articles = {
+            "health_articles": health_article
+
+        }
+
+
+    return render(request, 'categories/health.htm', health_article)
 
 def tech(request):
     if request.method == 'GET':

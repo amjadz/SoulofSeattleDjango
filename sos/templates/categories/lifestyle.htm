@@ -66,18 +66,21 @@
                 {% for lifestyle_article in lifestyle_articles  %}
                 <!-- Blog Entries Column -->
 
-                <div class="col-sm-4 col-md mt-4 ">
-                    <div class=" mb-4">
-                        <div class="card-body">
-                            <a href="{% url 'Article' lifestyle_article.post_Slug %}">
-                                <img class="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
-                                <h6>{{ lifestyle_article.post_Category }}</h6>
-                                <h2>{{ lifestyle_article.post_Title }}</h2>
-                                <h5>{{ lifestyle_article.post_CreatedOn | date}}</h5>
-                                <p>{{ lifestyle_article.post_Content|slice:":200" }} </p>
-                                <p>{{ lifestyle_article.author}}</p>
-
-                            </a>
+        <section class="pt-5 pl-5">
+            <div class="container">
+                    <div class="row">
+                        <!-- Blog Entries Column -->
+                        <div class="col-md-8 mt-3 left">
+                            {% for lifestyle_article in lifestyle_articles %}
+                            <div class="card mb-4">
+                                <div class="card-body">
+                                    <h2 class="card-title">{{ lifestyle_article.post_Title }}</h2>
+                                    <p class="card-text text-muted h6"> <img src="article/{{ lifestyle_article.upload_image }}"> | {{ lifestyle_article.author }} | {{ lifestyle_article.created_on | date}} </p>
+                                    <p class="card-text">{{lifestyle_article.content|slice:":200" }}</p>
+                                    <a href="{% url 'Article' lifestyle_article.post_Slug %}" class="btn btn-primary">Read More &rarr;</a>
+                                </div>
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                     {% if forloop.counter|divisibleby:"10" and not forloop.last %}

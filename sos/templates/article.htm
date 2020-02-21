@@ -30,6 +30,7 @@
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'Hompeage'%}" role="button" aria-haspopup="true" aria-expanded="false">Article</a>
                                 <div class="dropdown-menu">
+                                  <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
                                   <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
                                   <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
                                   <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
@@ -93,12 +94,12 @@
         <div class="container">
             <h1>Related Articles</h1>
             {% for related_article in related_articles %}
-            <a href="{% url 'Article' related_article.slug %}">
+            <a href="{% url 'Article' related_article.post_Slug %}">
                 <div class="card" style="width: 18rem;">
                     <img src="..." class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ related_article.title }}</h5>
-                        <p class="card-text">{{ related_article.content |slice:":200" }}</p>
+                        <h5 class="card-title">{{ related_article.post_Title }}</h5>
+                        <p class="card-text">{{ related_article.post_Content |slice:":200" }}</p>
                     </div>
                 </div>
             </div>

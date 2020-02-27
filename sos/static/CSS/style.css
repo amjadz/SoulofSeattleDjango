@@ -1,11 +1,28 @@
-/* @media(max-width: 425px){
-    .padding-top-article {
-        padding-right: 10px;
+@media(max-width: 425px){
+    .padding-top-image {
+        padding-right: 250px;
 
     }
 
+    .padding-top-article {
+        display: inline-block;
+ 
+    }
+    .nav {
+        display: inline;
+    }
 
-} */
+    h1 {
+        font-size: 40px;
+        white-space: nowrap;
+    } 
+
+    h6 {
+        white-space: nowrap;
+
+    }
+
+} 
 
 body, html {
     background-color: white;
@@ -48,9 +65,7 @@ hr {
 }
 
 .image-size {
-
     width: 20%;
-
 
 }
 
@@ -84,8 +99,9 @@ hr {
     padding-top: 120px;
 }
 
-.footer-link-padding {
 
-    padding-left: 290px;
+
+footer {
+    background-color: #b2bec3;
 
 }

@@ -16,14 +16,13 @@
 
 <body>
     <header class="pt-5 pl-5">
-        <div class="container">
+        <div class="container-fluid">
             <div class="pl-4">
-
                 <h1 class="center-text">Soul of Seattle</h1>
-                <div class="row pt-5">
+                <div class="row pt-5 pl-5">
 
                     <div class="col-sm">
-                        <ul class="nav">
+                        <ul class="nav ">
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="true" aria-expanded="false">Article</a>
@@ -60,22 +59,22 @@
         </div>
     </header>
 
-    <section class="pt-5 pl-5">
+    <section class="pt-5 pl-5 mt-5">
         <div class="container">
             <div class="row mb-5">
                 {% for article in articles %}
                 {% if forloop.first %}
-                <div class="col-lg-6 mt-4">
+                <div class="col-sm-7 col-md-5 col-lg-6 mt-4">
                     <a href="{% url 'Article' article.post_Slug %}">
                         <div class="padding-top-article">
-                            <h5>{{ article.post_Category }}</h5>
-                            <h1>{{ article.post_Title  }}</h1>
-                            <p>{{article.post_Content|slice:":200" }}</p>
-                            <h6>{{ article.author }} | {{ article.post_CreatedOn| date}} </h6>
+                            <h5 class = "pl-2">{{ article.post_Category }}</h5>
+                            <h1 class = "pl-2">{{ article.post_Title  }}</h1>
+                            <p class="pl-2">{{article.post_Content|slice:":200" }}</p>
+                            <h6 class="pl-2">{{ article.author }} | {{ article.post_CreatedOn| date}} </h6>
                         </div>
                     </a>
                 </div>
-                <img class="padding-top-article" src="https://via.placeholder.com/400.png/09f/fff"
+                <img class="padding-top-article padding-top-image pl-5" src="https://via.placeholder.com/400.png/09f/fff"
                     alt="{{ article.author }}">
 
             </div>
@@ -113,18 +112,13 @@
         </div>
     </section>
 
-    <footer class="footer-padding">
+    <footer>
         <div class="container">
-            <div class="row">
+            <div class="row center-text">
                 <div class="col-sm">
-                    <h5 class="pt-2">Soul of Seattle</h5>
-
-                </div>
-                <div class="col-sm">
-
                     <ul class="nav">
-                        <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                        <li class="nav-item dropdown">
+                            <a class="center-text nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false">Article</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
@@ -147,31 +141,20 @@
                 <div class="col-sm pt-2">
                     <a href="{% url 'Resources' %}">Resources</a>
                 </div>
-
-            </div>
-            <div class="row pl-4 pt-3">
-                <div class="col-sm pt-2 footer-link-padding">
+                <div class="col-sm pt-2">
                     <a href="{% url 'Community' %}">Community</a>
                 </div>
                 <div class="col-sm pt-2">
                     <a href="{% url 'Calender' %}">Calender</a>
                 </div>
-
-                <div class="col-sm  pt-2">
+                <div class="col-sm pt-2">
                     <a href="#">About Us</a>
-
                 </div>
-
             </div>
-        
         </div>
     </footer>
-
-
-
-
-
 </body>
+
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
     integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
     crossorigin="anonymous"></script>

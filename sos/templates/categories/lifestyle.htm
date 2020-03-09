@@ -20,16 +20,16 @@
             <div class="pl-4">
                 {% load static %}
                 <b>
-                    <h1 class="center-text ">Soul of Seattle</h1>
+                    <h1 class="center-text">Soul of Seattle</h1>
                 </b>
-
                 <div class="row pt-5">
-                    <div class="col-sm">
+                    <div class="col-sm">        
                         <ul class="nav">
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                                     aria-haspopup="true" aria-expanded="false">Article</a>
                                 <div class="dropdown-menu">
+                                
                                     <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
                                     <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
                                     <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
@@ -38,6 +38,7 @@
                                     <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
                                     <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
                                     <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
+                            
                                 </div>
                             </li>
 
@@ -60,35 +61,73 @@
             </div>
         </div>
     </header>
+    <div class="container">
+        <div class="pt-3 ml-1">
+            <div class="pt-4 col-sm-12">        
+                    <h4 class="heading-color"><b> LifeStyle </b></h4>  
+                    <hr>
+            </div>
+        </div>
+    </div>
     <section>
         <div class="container">
-            <div class="row padding-top-down">
-                {% for lifestyle_article in lifestyle_articles  %}
-                <!-- Blog Entries Column -->
-                <div class="col-sm-4 col-md mt-4 ">
-                    <div class=" mb-4">
-                        <div class="card-body">
-                            <a href="{% url 'Article' lifestyle_article.post_Slug %}">
-                                <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
-                                <h6>{{ lifestyle_article.post_Category }}</h6>
-                                <h2>{{ lifestyle_article.post_Title }}</h2>  
-                                <h5>{{ lifestyle_article.post_CreatedOn | date}}</h5>
-                                <p>{{lifestyle_article.post_Content|slice:":200" }}   </p>
-                                <p>{{ lifestyle_article.author}}</p>
-
-                            </a>
+            <div class="row">
+                <div class="lifestyle-Padding"></div>
+                    {% for lifestyle_article in lifestyle_articles  %}
+                    <!-- Blog Entries Column -->
+                    <div class="col-sm-8 col-md mt-4 ">
+                        <div class=" mb-4">
+                            <div class="card-body">
+                                <a href="{% url 'Article' lifestyle_article.post_Slug %}">
+                                    <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
+                                    <div class="heading-color">
+                                        <h6>{{ lifestyle_article.post_Category }}</h6>
+                                        <h2>{{ lifestyle_article.post_Title }}</h2>  
+                                        <h5>{{ lifestyle_article.post_CreatedOn | date}}</h5>
+                                        <p>{{lifestyle_article.post_Content|slice:":200" }}   </p>
+                                        <p>{{ lifestyle_article.author}}</p>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    {% if forloop.counter|divisibleby:"10" and not forloop.last %}
-                    <div class="row">
-                        {% endif %}
+                        {% if forloop.counter|divisibleby:"10" and not forloop.last %}
+                        <div class="row">
+                            {% endif %}
 
+                        </div>
+                        {% endfor %}               
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
     </section>
+    <footer class="footer-padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-xsm-2 pt-4 pl-8">
+                    Soul of Seattle
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Resources' %}">Resources</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Community' %}">Community</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Calender' %}">Calender</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4 pl-3">
+                    text
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

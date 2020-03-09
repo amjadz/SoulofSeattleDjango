@@ -61,3 +61,26 @@ hr {
     padding-top: 120px;
     /* padding-bottom: 100px; */
 }
+
+hr{
+    border-color: #B2B2B2;
+}
+
+.lifestyle-Padding{
+    padding-right: 13px;
+}
+
+.heading-color{
+    color: #040404;
+}
+
+a:link, a:hover, a:visited{
+    color: #040404;
+    text-decoration: none;
+}
+
+@media(max-width: 375px){
+    .lifestyle-Padding{
+        padding-right: 10px;
+    }
+}

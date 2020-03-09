@@ -59,10 +59,17 @@
             </div>
             </div>
         </header>
-
+        <div class="container">
+            <div class="pt-3 ml-1">
+                <div class="pt-4 col-sm-12">        
+                    <h4 class="heading-color"><b> Food </b></h4>  
+                    <hr>
+                </div>
+            </div>
+        </div>
         <section>
             <div class="container">
-                <div class="row padding-top-down">
+                <div class="row padding-down">
                     {% for food_article in food_articles  %}
                     <!-- Blog Entries Column -->
                     <div class="col-sm-4 col-md mt-4 ">
@@ -89,7 +96,30 @@
                 </div>
             </div>
         </section>
-
+        <footer class="footer-padding ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-2 col-xsm-2 pt-4 pl-8">
+                        Soul of Seattle
+                    </div>
+                    <div class="col-sm-2 col-xms-2 pt-4">
+                        <a href="{% url 'Resources' %}">Resources</a>
+                    </div>
+                    <div class="col-sm-2 col-xms-2 pt-4">
+                        <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                    </div>
+                    <div class="col-sm-2 col-xms-2 pt-4">
+                        <a href="{% url 'Community' %}">Community</a>
+                    </div>
+                    <div class="col-sm-2 col-xms-2 pt-4">
+                        <a href="{% url 'Calender' %}">Calender</a>
+                    </div>
+                    <div class="col-sm-2 col-xms-2 pt-4 pl-3">
+                        text
+                    </div>
+                </div>
+            </div>
+        </footer>
 
     
 </body>

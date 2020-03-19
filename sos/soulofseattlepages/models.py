@@ -45,5 +45,11 @@ class userPost(models.Model):
    def __str__(self):
        return self.post_Title
 
+class CalenderEvent(models.Model):
+    event_name = models.CharField(max_length = 30)
+    start_date = models.DateTimeField(null=True,blank=True)
+    end_date = models.DateTimeField(null=True,blank=True)
+    event_description = models.TextField()
 
-  
+    def __str__(self):
+        return self.event_name

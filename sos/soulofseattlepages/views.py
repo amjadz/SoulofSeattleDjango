@@ -33,8 +33,11 @@ def home(request):
 
         for post in posts:
             queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset})    
     
-        return render(request, 'searchResults.htm', {'results': queryset})
+    
+    
 
     return render(request, 'home.htm', articles)
 
@@ -47,6 +50,22 @@ def article(request, post_Slug):
         "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article
     }
 
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'article.htm', article_info)
 
 def lifestyle(request):
@@ -56,6 +75,23 @@ def lifestyle(request):
         lifestyle_articles = {
             "lifestyle_articles": lifestyle_article
         }
+    
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'categories/lifestyle.htm', lifestyle_articles)
 
 def politics(request):
@@ -67,6 +103,23 @@ def politics(request):
             "politics_articles": politics_article
 
         }
+
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'categories/politics.htm', politics_articles)
 
 def opinion(request):
@@ -79,6 +132,21 @@ def opinion(request):
             "opinion_articles": opinion_article
         }
 
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
 
     return render(request, 'categories/opinion.htm', opinion_articles)
 
@@ -89,6 +157,23 @@ def food(request):
         food_articles = {
             "food_articles": food_article
         }
+    
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'categories/food.htm', food_articles)
 
 def travel(request):
@@ -99,6 +184,21 @@ def travel(request):
         travel_articles = {
             "travel_articles": travel_article
         }
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
     
     return render(request, 'categories/travel.htm', travel_articles)
 
@@ -111,6 +211,22 @@ def health(request):
             "health_articles": health_article
 
         }
+    
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
 
 
     return render(request, 'categories/health.htm', health_articles)
@@ -122,6 +238,23 @@ def tech(request):
         tech_articles = {
             "tech_articles": tech_article
         }
+
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'categories/tech.htm', tech_articles)
 
 
@@ -131,12 +264,60 @@ def tech(request):
 
 
 def resources(request):
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'resources.htm')
 
 def community(request):
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'community.htm')
 
 def mosquemap(request):
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'mosquemap.htm')
 
 def calender(request):
@@ -176,13 +357,30 @@ def calender(request):
     # context = {
     #     "events" : events
     # }
+
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+
     return render(request, 'calender.htm', {'form': form})
 
 def get_article_queryset(request):
     query = request.GET.get('q')
     queryset = []
     queries = query.split(" ")
-        
+            
     for q in queries:
         posts = userPost.objects.filter(
             Q(post_Title__icontains=q) 
@@ -192,4 +390,20 @@ def get_article_queryset(request):
     for post in posts:
         queryset.append(post)
     
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+
+        return render(request, 'searchResults.htm', {'results': queryset}) 
+        
     return render(request, 'searchResults.htm', {'results': queryset})

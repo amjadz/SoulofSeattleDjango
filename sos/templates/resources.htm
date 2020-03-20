@@ -4,9 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
 </head>
@@ -15,27 +18,25 @@
     <header class="pt-5 pl-5">
         <div class="container">
             <div class="pl-4">
-                {% load static %}
-                <b>
-                    <h1 class="center-text ">Soul of Seattle</h1>
-                </b>
+                <h1 class="center-text">Soul of Seattle</h1>
+                <div class="row pt-5 pl-5">
 
-                <div class="row pt-5">
                     <div class="col-sm">
-                        <ul class="nav">
+                        <ul class="nav ">
                             <li class="nav-item dropdown ">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{% url 'Hompeage'%}" role="button" aria-haspopup="true" aria-expanded="false">Article</a>
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                                    aria-haspopup="true" aria-expanded="false">Article</a>
                                 <div class="dropdown-menu">
-                                  <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
-                                  <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
-                                  <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
-                                  <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
-                                  <a class="dropdown-item" href="{% url 'Food'%}">Food</a>
-                                  <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
-                                  <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
-                                  <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
+                                    <a class="dropdown-item" href="{% url 'Hompeage'%}">Home</a>
+                                    <a class="dropdown-item" href="{% url 'Lifestyle'%}">Lifestyle</a>
+                                    <a class="dropdown-item" href="{% url 'Politics'%}">Politics</a>
+                                    <a class="dropdown-item" href="{% url 'Opinion'%}">Opinion</a>
+                                    <a class="dropdown-item" href="{% url 'Food'%}">Food</a>
+                                    <a class="dropdown-item" href="{% url 'Travel'%}">Travel</a>
+                                    <a class="dropdown-item" href="{% url 'Health'%}">Health</a>
+                                    <a class="dropdown-item" href="{% url 'Tech'%}">Tech</a>
                                 </div>
-                              </li>
+                            </li>
 
                         </ul>
                     </div>
@@ -47,15 +48,21 @@
                     </div>
                     <div class="col-sm pt-2">
                         <a href="{% url 'Calender' %}">Calender</a>
-            
+
                     </div>
                     <div class="col-sm pt-2">
                         <a href="{% url 'Resources' %}">Resources</a>
                     </div>
+                    <div class="col-sm pt-2">
+                        <form id="demo-2" >
+                            <input type="search"  name="q" id="id_q" placeholder="Search">
+                        </form> 
+                    </div>
                 </div>
             </div>
-            </div>
-        </header>
+            <hr>
+        </div>
+    </header>
 
 
     <section class="pt-5">

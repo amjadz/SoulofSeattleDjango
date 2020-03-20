@@ -11,14 +11,6 @@
     <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
-    <div class="search-bar mt-sm-2 mr-2"></div>
-        <form method="get">
-            <input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">
-        </form>
-    
-
-
-    </div>
 </head>
 <body>
     <header class="pt-5 pl-5">
@@ -58,6 +50,11 @@
                     </div>
                     <div class="col-sm pt-2">
                         <a href="{% url 'Resources' %}">Resources</a>
+                    </div>
+                    <div class="col-sm pt-2">
+                        <form id="demo-2" >
+                            <input type="search"  name="q" id="id_q" placeholder="Search">
+                        </form> 
                     </div>
                 </div>
             </div>

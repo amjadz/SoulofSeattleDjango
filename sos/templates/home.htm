@@ -12,10 +12,26 @@
     <link rel="stylesheet" type="text/css" href="{% static "CSS/style.css" %}">
 
     <title>Soul of Seattle</title>
-    <div class="search-bar mt-sm-2 mr-2"></div>
-        <form method="get">
-            <input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">
+    
+    <!-- <div class="search-bar mt-sm-2 mr-2">
+        <div id="sb-search" class="sb-search">
+            <form method="GET">
+                <input type="text" name="q" id="id_q" placeholder="Search...">
+                <input class="sb-search-submit" type="submit" value="">
+                <span class="sb-icon-search"></span>
+            </form>
+        </div>    
+    </div> -->
+    <!-- <form method="get">
+            <input type="text" class="form-control" name="q" id="id_q" placeholder="Search...">    
         </form>
+        <button id="navbutton"><img src="https://img.icons8.com/small/16/000000/search.png"></button>
+        <script type="JavaScript">
+            var buttons = document.getElementbyID("navbutton");
+            buttons.innerHTML = "<img src="https://img.icons8.com/small/16/000000/search.png"/>";
+            buttons.style.background = none;
+            buttons.style.border = none;
+        </script> -->
     
 
 
@@ -60,6 +76,11 @@
                     </div>
                     <div class="col-sm pt-2">
                         <a href="{% url 'Resources' %}">Resources</a>
+                    </div>
+                    <div class="col-sm pt-2">
+                        <form id="demo-2" >
+                            <input type="search"  name="q" id="id_q" placeholder="Search">
+                        </form> 
                     </div>
                 </div>
             </div>

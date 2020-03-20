@@ -2,6 +2,7 @@
 from django.contrib import admin 
 from django.urls import path, include 
 from . import views
+from .views import article
 
 urlpatterns = [ 
     path('', views.home, name="Hompeage"),
@@ -10,6 +11,7 @@ urlpatterns = [
     path('mosquemap', views.mosquemap, name="MosqueMap"),
     path('community', views.community, name="Community"),
     path('calender', views.calender, name="Calender"),
+   
 
     # Different Category paths
     path('lifestyle', views.lifestyle, name="Lifestyle"),

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse 
+from django.db.models import Q
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
@@ -16,6 +17,23 @@ def home(request):
         articles = {
             "articles": queryset
         }
+    
+    if request.GET:    
+        query = request.GET.get('q')
+        queryset = []
+        queries = query.split(" ")
+        
+        for q in queries:
+            posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) |
+            Q(post_Content__icontains=q)
+            ).distinct()
+
+        for post in posts:
+            queryset.append(post)
+    
+        return render(request, 'searchResults.htm', {'results': queryset})
+
     return render(request, 'home.htm', articles)
 
 def article(request, post_Slug):
@@ -142,4 +160,18 @@ def calender(request):
             return HttpResponse("Your email has been sent!")
     return render(request, 'calender.htm', {'form': form})
 
+def get_article_queryset(request):
+    query = request.GET.get('q')
+    queryset = []
+    queries = query.split(" ")
+        
+    for q in queries:
+        posts = userPost.objects.filter(
+            Q(post_Title__icontains=q) 
+            #Q(post___icontains=q)
+            ).distinct()
 
+    for post in posts:
+        queryset.append(post)
+    
+    return render(request, 'searchResults.htm', {'results': queryset})

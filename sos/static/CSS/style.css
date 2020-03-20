@@ -128,3 +128,7 @@ a:link, a:hover, a:visited{
     max-width: 200px;
     width: 100%
 }
+#calendar {
+    max-width: 900px;
+    margin: 40px auto;
+  }

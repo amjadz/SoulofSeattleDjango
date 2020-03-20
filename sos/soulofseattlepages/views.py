@@ -4,8 +4,10 @@ from django.db.models import Q
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
-from .models import author, userPost
+from .models import author, userPost, CalenderEvent
 from taggit.models import Tag
+import datetime
+import json
 
 
 #Create your views here.
@@ -138,8 +140,21 @@ def mosquemap(request):
     return render(request, 'mosquemap.htm')
 
 def calender(request):
+    events = CalenderEvent.objects.all()
     if request.method == 'GET':
         form = ContactToAddEventForm()
+        # event_arr = []
+
+        # for i in events:
+        #     event_sub_arr = {}
+        #     event_sub_arr['title'] = i.event_name
+        #     start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        #     end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+        #     event_sub_arr['start'] = start_date
+        #     event_sub_arr['end'] = end_date
+        #     event_arr.append(event_sub_arr)
+        # return HttpResponse(json.dumps(event_arr))
+
     else:
         form = ContactToAddEventForm(request.POST)
         if form.is_valid():
@@ -157,6 +172,10 @@ def calender(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponse("Your email has been sent!")
+
+    # context = {
+    #     "events" : events
+    # }
     return render(request, 'calender.htm', {'form': form})
 
 def get_article_queryset(request):

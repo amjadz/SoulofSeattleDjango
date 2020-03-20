@@ -76,15 +76,15 @@
                 <div class="col-sm-4 col-md mt-4 ">
                     <div class=" mb-4">
                         <div class="card-body">
-                            <a href="{% url 'Article' tech_article.post_Slug %}">
+                             <a href="{% url 'Article' tech_article.post_Slug %}"> 
                                 <img class ="pb-4" src="https://via.placeholder.com/300" class="card-img-top">
                                 <h6>{{ tech_article.post_Category }}</h6>
                                 <h2>{{ tech_article.post_Title }}</h2>  
                                 <h5>{{ tech_article.post_CreatedOn | date}}</h5>
                                 <p>{{tech_article.post_Content|slice:":200" }}   </p>
                                 <p>{{ tech_article.author}}</p>
-
-                            </a>
+ 
+                            </a> 
                         </div>
                     </div>
                     {% if forloop.counter|divisibleby:"10" and not forloop.last %}

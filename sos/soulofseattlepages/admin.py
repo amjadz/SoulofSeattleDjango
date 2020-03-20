@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import author, userPost
+from .models import author, userPost, CalenderEvent
 
 # Register your models here.
 
@@ -14,4 +14,5 @@ class userAuthorAdminPost(admin.ModelAdmin):
 
 admin.site.register(author)
 admin.site.register(userPost)
+admin.site.register(CalenderEvent)
 

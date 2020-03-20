@@ -1,6 +1,41 @@
+@media(max-width: 425px){
+    .padding-top-image {
+        padding-right: 250px;
+
+    }
+
+    .padding-top-article {
+        display: inline-block;
+ 
+    }
+    .nav {
+        display: inline;
+    }
+
+    h1 {
+        font-size: 40px;
+        white-space: nowrap;
+    } 
+
+    h6 {
+        white-space: nowrap;
+
+    }
+
+} 
+
 body, html {
     background-color: white;
     font-family: 'Playfair Display', serif;
+}
+
+h1, h5 ,h6 {
+    color: #040404;
+}
+
+p {
+    color: black;
+
 }
 
 .avater-img {
@@ -25,16 +60,14 @@ hr {
 }
 
 .image-size {
-
     width: 20%;
-
 
 }
 
  /* Set the size of the div element that contains the map */
 #map {
     height: 400px;
-    width: 100%;
+    width: 50%;
 }
 
 .center-text {
@@ -59,7 +92,13 @@ hr {
 }
 .padding-top-down {
     padding-top: 120px;
-    /* padding-bottom: 100px; */
+}
+
+
+
+footer {
+    background-color: #b2bec3;
+
 }
 
 hr{

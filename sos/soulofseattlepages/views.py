@@ -40,7 +40,6 @@ def article(request, post_Slug):
     article = userPost.objects.filter(post_Slug=post_Slug).values()
     related_articles = userPost.objects.get(post_Slug=post_Slug)
 
-
     article_info = {
         "article": article,
         "related_articles" : related_articles.tags.similar_objects(),  # Instance of Post is article

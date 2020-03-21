@@ -26,13 +26,27 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
           var calendarEl = document.getElementById('calendar');
-    
           var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: [ 'timeGrid' ],
+            plugins: [ 'timeGrid', 'dayGrid' ],
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth, timeGridWeek,timeGridDay, '
+
+              },
             defaultView: 'timeGridWeek',
+            events: [
+                {% for i in events %}
+                {
+                    title: "{{ i.event_name}}",
+                    start: '{{ i.start_date|date:"Y-m-d" }}T{{i.start_date|time:"H:i" }}',
+                    description: "{{ i.event_description }}",
+                    end: '{{ i.end_date|date:"Y-m-d" }}T{{ i.end_date|time:"H:i" }}',
+                },
+                {% endfor %}
+            ]
 
           });
-    
           calendar.render();
         });
     
@@ -88,17 +102,13 @@
     <section>
         <div class="container">
             <div id = "calendar"></div>
-            <!-- <div class="pt-5 mr-5">
-                <iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=YW1qYWR6dWJhaXI5MzFAZ21haWwuY29t&amp;src=NjN1dXM3bjBwYm5xc3BnYmliaWVyYmpyZW9AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=cmw2YjFiNzF2N3FrdW5sNmtlc2Y5aDZpbmdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZXNobDdqZ2ZqdW5uNGthOGszcHQ1ZDZpM2tAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=bm1iMG12aTFzYWJjbmI3cm1vbTJxcXIwa3NAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=ZmphZm80OWk5OTU4YmM4cmliNWVrZmpobTRAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=dHJzdXNuODE5ZW1yNzhqaGV2NDd2bjQ4MWdAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=NjkxdDBzNmYwcnM5ZWxwZ3NsaDlxa2w3MTBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%2322AA99&amp;color=%23227F63&amp;color=%23515151&amp;color=%23AA5A00&amp;color=%23227F63&amp;color=%23402175&amp;color=%23871111&amp;color=%239F3501&amp;color=%23329262&amp;color=%231F753C&amp;mode=WEEK" style="border:solid 1px #777" width="1200" height="800" frameborder="0" scrolling="yes"></iframe>           
-             </div> -->
     </section> 
 
     <section>
         <div class="container">
             <div class="pt-5 pl-5">
-
                 <div class="pl-4">
-                    <h3>If you want to add an event please email us.</h3>
+                    <h3>Add an Event</h3>
                 </div>
                 <form method="post">
                     {% csrf_token %}
@@ -111,6 +121,30 @@
         </div>
     </section>
 
+    <footer class="footer-padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-xsm-2 pt-4 pl-8">
+                    Soul of Seattle
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Resources' %}">Resources</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Community' %}">Community</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Calender' %}">Calender</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4 pl-3">
+                    text
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

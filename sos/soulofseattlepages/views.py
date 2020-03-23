@@ -166,7 +166,7 @@ def calender(request):
     form = ContactToAddEventForm()
     if request.GET:  
         event_arr = []
-        
+
         for i in all_events:
             event_sub_arr = {}
             event_sub_arr['title'] = i.event_name
@@ -193,8 +193,10 @@ def calender(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponse("Your email has been sent!")
+            
     context = {
         "events":all_events,
         "form": form
     }
+
     return render(request,'calender.htm', context)

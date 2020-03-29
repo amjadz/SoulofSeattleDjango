@@ -224,22 +224,35 @@
                     }
                 }
 
-    
-
-
-
-
         </script>
-        <!--Load the API from the specified URL
-        * The async attribute allows the browser to render the page while the API loads
-        * The key parameter will contain your own API key (which is not needed for this tutorial)
-        * The callback parameter executes the initMap() function
-        -->
         <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_JpGvecXDsdncOp72F8HWYzOj0oBPBm4&libraries=places&callback=initMap"">
             </script>
     </section>
-
+    <footer class="footer-padding ">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 col-xsm-2 pt-4 pl-8">
+                    Soul of Seattle
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Resources' %}">Resources</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'MosqueMap' %}">Mosque Map</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Community' %}">Community</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4">
+                    <a href="{% url 'Calender' %}">Calender</a>
+                </div>
+                <div class="col-sm-2 col-xms-2 pt-4 pl-3">
+                    text
+                </div>
+            </div>
+        </div>
+    </footer>
 
 
 </body>

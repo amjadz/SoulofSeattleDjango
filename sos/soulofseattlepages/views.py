@@ -9,6 +9,7 @@ import datetime
 import json
 
 
+
 #Create your views here.
 
 def home(request):
@@ -121,22 +122,60 @@ def community(request):
 def mosquemap(request):
     return render(request, 'mosquemap.htm')
 
+# def calender(request):
+#     event = CalenderEvent.objects.all()
+#     if request.method == 'GET':
+#         form = ContactToAddEventForm()
+#         event_arr = []
+
+#         for i in event:
+#             event_sub_arr = {}
+#             event_sub_arr['title'] = i.event_name
+#             start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+#             end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+#             event_sub_arr['start'] = start_date
+#             event_sub_arr['end'] = end_date
+#             event_arr.append(event_sub_arr)
+#         return JsonResponse(event_arr, safe=False)
+
+#         return render(request, 'calender.htm', {'form': form, 'event': event})
+
+    # else:
+    #     form = ContactToAddEventForm(request.POST)
+    #     if form.is_valid():
+    #         event_name = form.cleaned_data['event_name']
+    #         your_email = form.cleaned_data['your_email']
+    #         start_time = form.cleaned_data['start_time']
+    #         end_time = form.cleaned_data['end_time']
+    #         event_date = form.cleaned_data['event_date'] 
+    #         message = form.cleaned_data['message']
+
+    #         email_message = message + " " + ("start time: " + start_time) + " " + ("end time:" + end_time) + " " + str(event_date) 
+            
+    #         try:
+    #             send_mail(event_name, email_message, 'amjadzubair931@gmail.com' ,[your_email], html_message=None)
+    #         except BadHeaderError:
+    #             return HttpResponse('Invalid header found.')
+    #         return HttpResponse("Your email has been sent!")
+
+    
+
+
 def calender(request):
-    events = CalenderEvent.objects.all()
-    if request.method == 'GET':
-        form = ContactToAddEventForm()
-        # event_arr = []
+    all_events = CalenderEvent.objects.all()
+    form = ContactToAddEventForm()
+    if request.GET:  
+        event_arr = []
 
-        # for i in events:
-        #     event_sub_arr = {}
-        #     event_sub_arr['title'] = i.event_name
-        #     start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-        #     end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
-        #     event_sub_arr['start'] = start_date
-        #     event_sub_arr['end'] = end_date
-        #     event_arr.append(event_sub_arr)
-        # return HttpResponse(json.dumps(event_arr))
-
+        for i in all_events:
+            event_sub_arr = {}
+            event_sub_arr['title'] = i.event_name
+            start_date = datetime.datetime.strptime(str(i.start_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+            end_date = datetime.datetime.strptime(str(i.end_date.date()), "%Y-%m-%d").strftime("%Y-%m-%d")
+            event_sub_arr['start'] = start_date
+            event_sub_arr['end'] = end_date
+            event_arr.append(event_sub_arr)
+        return HttpResponse(json.dumps(event_arr))
     else:
         form = ContactToAddEventForm(request.POST)
         if form.is_valid():
@@ -154,10 +193,10 @@ def calender(request):
             except BadHeaderError:
                 return HttpResponse('Invalid header found.')
             return HttpResponse("Your email has been sent!")
+            
+    context = {
+        "events":all_events,
+        "form": form
+    }
 
-    # context = {
-    #     "events" : events
-    # }
-    return render(request, 'calender.htm', {'form': form})
-
-
+    return render(request,'calender.htm', context)

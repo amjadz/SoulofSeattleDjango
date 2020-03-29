@@ -38,12 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'soulofseattlepages',
     'crispy_forms',
     'bootstrap_datepicker_plus',
     'bootstrap4',
     'taggit' 
-
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

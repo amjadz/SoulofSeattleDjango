@@ -2,6 +2,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 
 
+
 # Create your models here.
 
 STATUS = (
@@ -53,3 +54,4 @@ class CalenderEvent(models.Model):
 
     def __str__(self):
         return self.event_name
+

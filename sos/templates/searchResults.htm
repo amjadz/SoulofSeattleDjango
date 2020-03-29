@@ -13,6 +13,20 @@
     <title>Soul of Seattle</title>
 </head>
 <body>
+    
+    <form method='GET'>
+        <ul>
+            {% for post_Category in filter.form.post_Category %}
+            <li>
+                <button type="submit" name="post_Category" value="{{ post_Category }}"> 
+                   hipt2
+                </button>
+            </li>
+            {% endfor %}
+        </ul>
+    </form>
+    
+    
     <header class="pt-5 pl-5">
         <div class="container">
             <div class="pl-4">

@@ -5,6 +5,7 @@ from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import ContactToAddEventForm
 from .models import author, userPost, CalenderEvent
+from .filters import filterPost
 from taggit.models import Tag
 import datetime
 import json
@@ -15,11 +16,10 @@ import json
 def home(request):
     if request.method == 'GET':
         queryset = userPost.objects.filter(post_Status=1).order_by('-post_CreatedOn')
-
         articles = {
             "articles": queryset
         }
-    
+      
     if request.GET:    
         query = request.GET.get('q')
         queryset = []
@@ -35,9 +35,14 @@ def home(request):
             queryset.append(post)
 
         return render(request, 'searchResults.htm', {'results': queryset})    
-    
-    
-    
+
+    if request.GET:
+        filter_Post = filterPost(request.GET, queryset=userPost.objects.all())
+
+        return render(request,'home.htm', {'filter': filter_Post})
+
+       
+        
 
     return render(request, 'home.htm', articles)
 
@@ -407,3 +412,4 @@ def get_article_queryset(request):
         return render(request, 'searchResults.htm', {'results': queryset}) 
         
     return render(request, 'searchResults.htm', {'results': queryset})
+

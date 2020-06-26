@@ -403,10 +403,6 @@ def calender(request):
         "form": form
     }
 
-    # context = {
-    #     "events" : events
-    # }
-
     if request.GET:    
         query = request.GET.get('q')
         queryset = []
